@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Stack;
+import java.util.UUID;
 
 class Calculator {
 
@@ -39,7 +42,22 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-        return 0;
+        /* Declare an array to store Fibonacci numbers. */
+        int f[] = new int[n+2]; // 1 extra to handle case, n = 0
+        int i;
+
+        /* 0th and 1st number of the series are 0 and 1*/
+        f[0] = 0;
+        f[1] = 1;
+
+        for (i = 2; i <= n; i++)
+        {
+       /* Add the previous 2 numbers in the series
+         and store it */
+            f[i] = f[i-1] + f[i-2];
+        }
+
+        return f[n];
     }
 
 
@@ -50,8 +68,31 @@ class Calculator {
     if int a = 10 then this method returns: 1010
     if int a = 16 then this method returns: 10000
      */
-    String intToBinaryNumber(int n){
-        return null;
+
+
+    String intToBinaryNumber(int num){
+        Stack<Integer> st = new Stack<>();
+        String toReturn = "";
+        // Number Should be positive
+        if(num == 0){
+            return "0";
+        }
+        while (num > 0) {
+
+            // Pushing numbers inside stack that
+            // are divisible by 2
+            st.push(num % 2);
+            // Dividing number by 2
+            num = num / 2;
+        }
+
+        // Checking condition whether stack is empty
+        while (!(st.isEmpty())) {
+
+            // Printing binary number
+            toReturn = toReturn + Integer.toString(st.pop());
+        }
+        return toReturn;
     }
 
     /*
@@ -64,7 +105,7 @@ class Calculator {
      */
     String createUniqueID(String n){
 
-        return null;
+        return n + UUID.randomUUID().toString();
     }
 
 
