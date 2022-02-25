@@ -3,7 +3,7 @@ import java.util.Stack;
 import java.util.UUID;
 
 class Calculator {
-
+    private String justPushingToCodebase = "";
     Calculator(){
 
     }
